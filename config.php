@@ -1,29 +1,16 @@
 <?php
-// Configuración para Render.com
+// Configuración para Railway.app
 $isLocal = (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] === '127.0.0.1' || $_SERVER['SERVER_NAME'] === 'localhost')) || php_sapi_name() === 'cli';
 
-if ($isLocal && file_exists('.env')) {
-    $envContent = file_get_contents('.env');
-    $lines = explode("\n", $envContent);
-    $env = [];
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if (!empty($line) && strpos($line, '=') !== false && substr($line, 0, 1) !== '#') {
-            list($key, $value) = explode('=', $line, 2);
-            $env[trim($key)] = trim($value);
-        }
-    }
-} else {
-    // En Render.com, usar variables de entorno
-    $env = [
-        'BOT_TOKEN' => getenv('BOT_TOKEN'),
-        'BOT_USERNAME' => getenv('BOT_USERNAME'),
-        'ADMIN_CHAT_ID' => getenv('ADMIN_CHAT_ID'),
-        'RENDER_URL' => getenv('RENDER_URL')
-    ];
-}
+// En Railway, usar variables de entorno
+$env = [
+    'BOT_TOKEN' => $_ENV['BOT_TOKEN'] ?? getenv('BOT_TOKEN'),
+    'BOT_USERNAME' => $_ENV['BOT_USERNAME'] ?? getenv('BOT_USERNAME'),
+    'ADMIN_CHAT_ID' => $_ENV['ADMIN_CHAT_ID'] ?? getenv('ADMIN_CHAT_ID'),
+    'RAILWAY_URL' => $_ENV['RAILWAY_STATIC_URL'] ?? getenv('RAILWAY_STATIC_URL')
+];
 
-// Configuración del Bot de Telegram - TOKEN REAL
+// Configuración del Bot de Telegram
 define('BOT_TOKEN', $env['BOT_TOKEN'] ?? '8336253561:AAE1MoMaNHa2wRgGpKZK7HqajX049eSpyfs');
 define('BOT_USERNAME', $env['BOT_USERNAME'] ?? 'FinanceNewsGNewsBot');
 
@@ -35,12 +22,19 @@ define('GNEWS_BASE_URL', 'https://gnews.io/api/v4');
 if ($isLocal) {
     define('DB_PATH', __DIR__ . '/bot_database.sqlite');
 } else {
-    define('DB_PATH', '/tmp/bot_database.sqlite');
+    // En Railway, usar path persistente
+    define('DB_PATH', __DIR__ . '/storage/bot_database.sqlite');
 }
 
-// Configuración general
-define('WEBHOOK_URL', $env['RENDER_URL'] ?? getenv('RENDER_URL') ?? 'https://tu-app.onrender.com');
-define('ADMIN_CHAT_ID', $env['ADMIN_CHAT_ID'] ?? getenv('ADMIN_CHAT_ID') ?? '123456789');
+// Configuración general - Railway proporciona URL automáticamente
+$railwayUrl = $env['RAILWAY_URL'] ?? ($_SERVER['RAILWAY_STATIC_URL'] ?? 'https://tu-app.railway.app');
+define('WEBHOOK_URL', $railwayUrl);
+define('ADMIN_CHAT_ID', $env['ADMIN_CHAT_ID'] ?? '123456789');
+
+// Crear directorio storage si no existe
+if (!is_dir(dirname(DB_PATH))) {
+    mkdir(dirname(DB_PATH), 0755, true);
+}
 
 // Inicializar base de datos SQLite
 function initDatabase() {
@@ -86,7 +80,7 @@ function logMessage($message) {
     $logFile = dirname(DB_PATH) . '/bot.log';
     file_put_contents($logFile, $logMessage, FILE_APPEND);
     
-    // Log para Render
+    // Log para producción
     error_log($logMessage);
 }
 ?>
