@@ -1,0 +1,25 @@
+[2025-11-10 23:40:29] GNews URL: https://gnews.io/api/v4/search?q=petr%C3%B3leo+OR+inversiones+OR+wall+street&lang=es&country=mx&max=2&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-10 23:40:55] GNews API error: Error fetching from GNews API
+[2025-11-10 23:45:32] 🔗 Solicitando a GNews: https://gnews.io/api/v4/search?q=S%26P+OR+wall+street&lang=es&country=mx&max=2&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-10 23:45:33] ❌ Respuesta inesperada de GNews: {"errors":{"q":"The query has a syntax error (see https:\/\/docs.gnews.io\/endpoints\/search-endpoint#query-syntax)."}}
+[2025-11-10 23:45:33] ⚠️ Usando noticias de fallback: 2
+[2025-11-10 23:52:32] 🔄 Cron job iniciado
+[2025-11-10 23:52:32] 📊 Usuarios activos encontrados: 1
+[2025-11-10 23:52:32] 📡 Obteniendo noticias de GNews...
+[2025-11-10 23:52:32] 🔗 Solicitando a GNews: https://gnews.io/api/v4/search?q=wall+street+OR+NASDAQ&lang=es&country=mx&max=3&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-10 23:52:33] ✅ Noticias obtenidas de GNews: 3
+[2025-11-10 23:52:33] 📰 Noticias obtenidas: 3
+[2025-11-10 23:52:34] 📤 [SIMULADO] Enviando a 123456789
+[2025-11-10 23:52:34] ✅ Cron job completado: 1 enviados, 0 errores
+[2025-11-10 23:59:51] 🔄 Cron job iniciado
+[2025-11-10 23:59:51] 📊 Usuarios activos encontrados: 1
+[2025-11-10 23:59:51] 📡 Obteniendo noticias de GNews...
+[2025-11-10 23:59:51] 🔗 Solicitando a GNews: https://gnews.io/api/v4/search?q=inversiones+OR+criptomonedas&lang=es&country=mx&max=3&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-10 23:59:52] ✅ Noticias obtenidas de GNews: 3
+[2025-11-10 23:59:52] 📰 Noticias obtenidas: 3
+[2025-11-10 23:59:52] 📤 [SIMULADO] Enviando a 123456789
+[2025-11-10 23:59:52] ✅ Cron job completado: 1 enviados, 0 errores
+[2025-11-11 00:00:00] 🔗 Solicitando a GNews: https://gnews.io/api/v4/search?q=mercado+OR+criptomonedas&lang=es&country=mx&max=3&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-11 00:00:01] ✅ Noticias obtenidas de GNews: 3
+[2025-11-11 00:03:50] 🔗 Solicitando a GNews: https://gnews.io/api/v4/search?q=inversiones+OR+finanzas&lang=es&country=mx&max=3&apikey=4fc181dbf5625dc4d3a26e3fcdb42bd2
+[2025-11-11 00:03:50] ✅ Noticias obtenidas de GNews: 3
