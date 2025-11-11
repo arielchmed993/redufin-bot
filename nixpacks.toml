@@ -1,11 +1,11 @@
 [phases.setup]
 cmds = [
-  "apt-get update && apt-get install -y sqlite3",
-  "mkdir -p storage"
+  "mkdir -p /app/storage",
+  "chmod 755 /app/storage"
 ]
 
 [phases.install]
-cmds = ["composer install --no-dev --optimize-autoloader"]
+cmds = ["composer install --no-dev --optimize-autoloader --ignore-platform-reqs"]
 
 [start]
 cmd = "php -S 0.0.0.0:$PORT index.php"

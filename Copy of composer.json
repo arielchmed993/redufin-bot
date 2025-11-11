@@ -1,0 +1,17 @@
+{
+    "name": "telegram-finance-bot",
+    "description": "Telegram Bot for Financial News with GNews API",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "ext-pdo": "*",
+        "ext-sqlite3": "*",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "echo '✅ Dependencias instaladas'"
+        ]
+    }
+}
